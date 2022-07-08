@@ -79,7 +79,7 @@ def main():
         elif selection == "q":
             return
 
-#main()
+main()
 
 def test_assess_skin():
     print(assess_skin("1") == some_dehydration)

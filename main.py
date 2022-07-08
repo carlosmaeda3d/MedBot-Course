@@ -93,7 +93,7 @@ def test_assess_eyes():
     print(assess_eyes("2") == severe_dehydration)
     print(assess_eyes("") == "")
 
-test_assess_eyes()
+#test_assess_eyes()
 
 def test_appearance():
     print(assess_appearance())

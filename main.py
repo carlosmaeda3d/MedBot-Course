@@ -14,6 +14,8 @@ severe_dehydration = "Severe Dehydration"
 some_dehydration = "Some Dehydration"
 no_dehydration = "No Dehydration"
 
+error_message = "Could not save data. Invalid name or diagnosis format"
+
 patients_and_diagnosis = [
     "Mike - Severe Dehydration",
     "John - Some Dehydration",
@@ -25,6 +27,11 @@ def list_patients():
         print(patient)
 
 def save_new_diagnosis(name, diagnosis):
+    #checking to make sure name & diagnosis is in correct format
+    if name == "" or diagnosis == "":
+        print(error_message)
+        return
+
     final_diagnosis = name + " - " + diagnosis
     patients_and_diagnosis.append(final_diagnosis)
     print("Final Diagnosis:", final_diagnosis, "\n")
@@ -34,12 +41,16 @@ def assess_skin(skin):
         return some_dehydration
     elif skin == "2":
         return severe_dehydration
+    else:
+        return ""
 
 def assess_eyes(eyes):
     if eyes == "1":
         return no_dehydration
     elif eyes == "2":
         return severe_dehydration
+    else:
+        return ""
 
 def assess_appearance():
     appearance = input(appearance_prompt)
@@ -49,6 +60,8 @@ def assess_appearance():
     elif appearance == "2":
         skin = input(skin_prompt)
         return assess_skin(skin)
+    else:
+        return ""
 
 def start_new_diagnosis():
     name = input(name_prompt)
@@ -66,4 +79,23 @@ def main():
         elif selection == "q":
             return
 
-main()
+#main()
+
+def test_assess_skin():
+    print(assess_skin("1") == some_dehydration)
+    print(assess_skin("2") == severe_dehydration)
+    print(assess_skin("") == "")
+
+#test_assess_skin()
+
+def test_assess_eyes():
+    print(assess_eyes("1") == no_dehydration)
+    print(assess_eyes("2") == severe_dehydration)
+    print(assess_eyes("") == "")
+
+test_assess_eyes()
+
+def test_appearance():
+    print(assess_appearance())
+
+#test_appearance()
